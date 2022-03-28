@@ -53,9 +53,25 @@ public String checkout(Model model) {
 model.addAttribute("total", GlobalData.cart.stream().mapToDouble(Product::getPrice).sum());
 return"checkout";
 }
-  @PostMapping("/payNow")
-public String payNow() {
+@PostMapping("/card")
+public String card() {
 GlobalData.cart.clear();
+return "card";
+}
+
+
+
+@GetMapping("/payNow")
+public String payNow() {
+//GlobalData.cart.clear();
+return "ord";
+}
+
+
+
+@PostMapping("/payNow")
+public String payNow2() {
+//GlobalData.cart.clear();
 return "ord";
 }
 
