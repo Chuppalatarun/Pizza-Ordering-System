@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 
@@ -51,6 +52,11 @@ return"redirect:/cart";
 public String checkout(Model model) {
 model.addAttribute("total", GlobalData.cart.stream().mapToDouble(Product::getPrice).sum());
 return"checkout";
+}
+  @PostMapping("/payNow")
+public String payNow() {
+GlobalData.cart.clear();
+return "ord";
 }
 
 
